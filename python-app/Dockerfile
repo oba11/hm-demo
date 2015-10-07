@@ -1,4 +1,5 @@
 FROM alpine
+MAINTAINER Oluwaseun Obajobi <oba@obajobi.com>
 
 RUN apk add --update python python-dev py-pip && rm -rf /var/cache/apk/*
 

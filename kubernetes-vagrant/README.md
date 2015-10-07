@@ -1,4 +1,4 @@
-# Kubernetes Cluster with Vagrant on CoreOS
+# Kubernetes Cluster Setup with Vagrant on CoreOS
 
 Please **NOTE** this setup was lifted from `https://github.com/coreos/coreos-kubernetes`
 
@@ -8,7 +8,7 @@ Install Vagrant
 
 ### Kubectl
 This is the primary tool for administering kubernetes.
-Set the ARCH environment variable to *linux* or *darwin* based on your workstation operating system
+Set the ARCH environment variable to **linux** or **darwin** based on your workstation operating system
 
 ```
 $ ARCH=darwin; wget https://storage.googleapis.com/kubernetes-release/release/v1.0.6/bin/$ARCH/amd64/kubectl

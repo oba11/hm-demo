@@ -14,8 +14,8 @@ spec:
         name: nginx
     spec:
       containers:
-          name: nginx
-          image: oba11/nginx:etcd
+        - name: nginx
+          image: oba11/nginx-proxy-etcd:latest
           ports:
             - containerPort: 80
               hostPort: 80
