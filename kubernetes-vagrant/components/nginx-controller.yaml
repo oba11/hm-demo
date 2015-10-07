@@ -16,6 +16,7 @@ spec:
       containers:
         - name: nginx
           image: oba11/nginx-proxy-etcd:latest
+          args: ["-node=172.17.4.51:2379"]
           ports:
             - containerPort: 80
               hostPort: 80

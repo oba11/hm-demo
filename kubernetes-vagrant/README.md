@@ -55,3 +55,47 @@ Submit the ReplicationController components
 $ kubectl create -f components/python-app-controller.yaml
 $ kubectl create -f components/nginx-controller.yaml
 ```
+
+### Testing the components
+
+* Get the status of the pods and all should be running
+
+```
+$ kubectl get pods
+NAME               READY     STATUS    RESTARTS   AGE
+nginx-rcoe7        1/1       Running   0          5m
+python-app-ljiqa   1/1       Running   0          10m
+
+```
+* Get the IP address of the nginx pod
+```
+kubectl get pods -l name=nginx -o wide
+NAME          READY     STATUS    RESTARTS   AGE       NODE
+nginx-rcoe7   1/1       Running   0          11m       172.17.4.201
+
+```
+
+* Open a browser and type the address of the node above (e.g 172.17.4.201 as above)
+* Scale the Python app proxy from 1 replica to 2 replicas
+
+```
+$ kubectl scale --replicas=2 replicationcontrollers python-app
+```
+
+* Get the pod status again and should look like below
+
+```
+$ kubectl get pods
+NAME               READY     STATUS    RESTARTS   AGE
+nginx-rcoe7        1/1       Running   0          12m
+python-app-5afmg   1/1       Running   0          3m
+python-app-ljiqa   1/1       Running   0          17m
+```
+
+* Hit refresh on the browser multiple times and you should see the content changing
+
+### Once done and verified that service discovery is working, cleanup the environment
+
+```
+$ vagrant destroy
+```
