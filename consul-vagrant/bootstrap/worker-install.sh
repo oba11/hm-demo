@@ -81,7 +81,7 @@ ExecStart=/bin/bash -c '\
   /usr/bin/docker run \
   --name registrator -h registrator \
   -v /var/run/docker.sock:/tmp/docker.sock \
-  gliderlabs/registrator consul://${ADVERTISE_IP}:8500'
+  gliderlabs/registrator -ip=${ADVERTISE_IP} consul://${ADVERTISE_IP}:8500'
 Restart=always
 RestartSec=10
 ExecStop=/usr/bin/docker stop registrator
