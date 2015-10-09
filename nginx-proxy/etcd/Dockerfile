@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER Oluwaseun Obajobi <oba@obajobi.com>
 
-RUN apk add --update nginx openssl ca-certificates && rm -rf /var/cache/apk/*
+RUN apk add --update nginx openssl && rm -rf /var/cache/apk/*
 
 ENV CONFD_VERSION 0.9.0
 
