@@ -1,9 +1,5 @@
-{{range services}}
-{{$service:=.Name}}
-{{range $tag, $services := service $service | byTag}}
-{{if service "python-app"}}
-upstream {{$service}} {
-  {{range $services}} server {{.Address}}:{{.Port}} max_fails=2 fail_timeout=3s;
+upstream python-app {
+  {{range service "python-app"}} server {{.Address}}:{{.Port}} max_fails=2 fail_timeout=3s;
   {{end}}
 }
 
@@ -11,10 +7,9 @@ server {
   listen 80;
 
   location / {
-    proxy_pass          http://{{$service}};
+    proxy_pass          http://python-app;
     include             /etc/nginx/proxy_params;
     proxy_http_version  1.1;
     proxy_set_header    Connection "";
   }
-}{{end}}{{end}}
-{{end}}
+}

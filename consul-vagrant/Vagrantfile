@@ -11,7 +11,7 @@ Vagrant.require_version ">= 1.6.0"
 $update_channel = "alpha"
 $consul_count = 3
 $consul_vm_memory = 512
-$worker_count = 1
+$worker_count = 2
 $worker_vm_memory = 512
 
 CONSUL_CLOUD_CONFIG_PATH = File.expand_path("bootstrap/consul-server-install.sh")
