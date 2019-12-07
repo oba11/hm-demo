@@ -1,0 +1,20 @@
+replicaCount: 1
+upstreamUri: 'http://time.jsontest.com'
+
+image:
+  repository: oba11/python-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+# service:
+#   type: NodePort
+#   port: 80
+#   nodePort: 31001
+
+ingress:
+  enabled: false
+  host: chart-example.local

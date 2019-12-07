@@ -1,11 +1,11 @@
-FROM alpine
+FROM python:3.8-alpine
 MAINTAINER Oluwaseun Obajobi <oba@obajobi.com>
 
-RUN apk add --update python python-dev py-pip && rm -rf /var/cache/apk/*
-
-COPY ./src /src
+COPY ./src/requirements.txt /src/requirements.txt
 WORKDIR /src
 
 RUN pip install -r requirements.txt
-EXPOSE 8080
+COPY ./src /src
+
+EXPOSE 80
 CMD ["python", "app.py"]

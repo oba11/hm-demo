@@ -5,7 +5,7 @@ Simple Python app using Flask to output the hostname and the ip address of the c
 ## Getting Started
 
 ```
-docker run -it -p 8080:8080 oba11/python-app
+docker run -it -p 8080:80 oba11/python-app
 ```
 
 ## Testing locally
@@ -17,4 +17,12 @@ docker run -it -p 8080:8080 oba11/python-app
 
 ```
 $ docker-compose up
+```
+
+##Using Helm
+
+```
+make NAME=backend
+make NAME=middleware ARGS='--set upstreamUri=http://backend-python-app'
+make NAME=frontend ARGS='--set upstreamUri=http://middleware-python-app --set ingress.enabled=true --set ingress.host=*'
 ```
