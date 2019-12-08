@@ -15,7 +15,7 @@ def index():
   upstream_uri = os.getenv('UPSTREAM_URI', 'http://time.jsontest.com')
 
   headers = forward_headers(request.headers)
-  print(, flush=True)
+  print(headers, flush=True)
   req = urllib.request.Request(upstream_uri, headers=headers)
   resp = urllib.request.urlopen(req)
 
