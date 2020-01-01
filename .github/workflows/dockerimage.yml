@@ -17,7 +17,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Docker Build
-      run: docker build --tag docker.pkg.github.com/oba11/hm-demo/hm-demo:latest .
+      run: docker build --tag docker.pkg.github.com/oba11/hm-demo/60b15dd1:latest .
       working-directory: ./python-app
     - name: Docker Publish
-      run: docker push docker.pkg.github.com/oba11/hm-demo/hm-demo:latest
+      run: docker push docker.pkg.github.com/oba11/hm-demo/60b15dd1:latest
