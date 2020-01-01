@@ -22,7 +22,7 @@ $ vagrant up
 ```
 $ vagrant ssh w1
 
-$ docker run -d -e SERVICE_NAME=python-app -P oba11/python-app
+$ docker run -d -e SERVICE_NAME=python-app -P docker.pkg.github.com/oba11/hm-demo/app
 $ docker run -d -v /etc/environment:/etc/environment:ro -p 80:80 oba11/nginx-proxy-consul
 ```
 
@@ -33,7 +33,7 @@ $ docker run -d -v /etc/environment:/etc/environment:ro -p 80:80 oba11/nginx-pro
 ```
 $ vagrant ssh w2
 
-$ docker run -d -e SERVICE_NAME=python-app -P oba11/python-app
+$ docker run -d -e SERVICE_NAME=python-app -P docker.pkg.github.com/oba11/hm-demo/app
 ```
 
 * Hit refresh on the browser multiple times on the `nginx-proxy` url and you should see the content changing

@@ -2,7 +2,7 @@ replicaCount: 1
 upstreamUri: 'http://time.jsontest.com'
 
 image:
-  repository: oba11/python-app
+  repository: docker.pkg.github.com/oba11/hm-demo/app
   tag: latest
   pullPolicy: IfNotPresent
 

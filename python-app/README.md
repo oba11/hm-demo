@@ -5,7 +5,7 @@ Simple Python app using Flask to output the hostname and the ip address of the c
 ## Getting Started
 
 ```
-docker run -it -p 8080:80 oba11/python-app
+docker run -it -p 8080:80 docker.pkg.github.com/oba11/hm-demo/app
 ```
 
 ## Testing locally
