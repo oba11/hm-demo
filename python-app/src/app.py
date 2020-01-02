@@ -3,6 +3,7 @@ import os
 import urllib.request
 import time
 from flask import Flask, request
+import json
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def index():
   upstream_uri = os.getenv('UPSTREAM_URI', 'http://time.jsontest.com')
 
   headers = forward_headers(request.headers)
-  print(headers, flush=True)
+  # print(headers, flush=True)
   req = urllib.request.Request(upstream_uri, headers=headers)
   resp = urllib.request.urlopen(req)
 
@@ -39,8 +40,18 @@ def forward_headers(headers):
   output = {}
   for h in incoming_headers:
     if headers.get(h):
-      output[h] = headers[h]
+      val = headers[h]
+      if h == 'x-b3-sampled' and _convert(val) == 0:
+        output[h] = 1
+      else:
+        output[h] = val
   return output
+
+def _convert(obj):
+  try:
+    return json.loads(obj)
+  except json.decoder.JSONDecodeError:
+    return obj
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=80)
