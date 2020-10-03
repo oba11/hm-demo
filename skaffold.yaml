@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+build:
+  artifacts:
+  - image: python-app
+    context: ./python-app
+deploy:
+  helm:
+    releases:
+    - name: python-app
+      chartPath: charts/python-app
+      wait: true
+      setValues:
+        ingress.enabled: false
+      artifactOverrides:
+        image: python-app
+      setValueTemplates:
+        image.repository: "{{.IMAGE_REPO}}"
+        image.tag: "{{.IMAGE_TAG}}"
+      imageStrategy:
+        helm: {}
