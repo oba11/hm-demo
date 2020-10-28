@@ -1,0 +1,12 @@
+- package-ecosystem: docker
+  directory: "hm-demo/python-app"
+  schedule:
+    interval: weekly
+    time: '01:00'
+  open-pull-requests-limit: 10
+- package-ecosystem: docker
+  directory: "hm-demo/golang-app"
+  schedule:
+    interval: weekly
+    time: '01:00'
+  open-pull-requests-limit: 10
