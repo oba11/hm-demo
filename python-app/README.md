@@ -24,7 +24,7 @@ $ docker-compose up
 ```
 make NAME=backend
 make NAME=middleware ARGS='--set upstreamUri=http://backend-python-app'
-make NAME=frontend ARGS='--set upstreamUri=http://middleware-python-app --set ingress.enabled=true --set ingress.host=*'
+make NAME=frontend ARGS='--set upstreamUri=http://middleware-python-app --set ingress.enabled=true --set ingress.host=app.example.com'
 
 make rm NAME='frontend middleware backend'
 ```

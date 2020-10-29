@@ -44,24 +44,12 @@ def healthz():
 
 def forward_headers(headers):
   incoming_headers = [
-    'x-request-id',
-    'x-b3-traceid',
-    'x-b3-spanid',
-    'x-b3-parentspanid',
-    'x-b3-sampled',
-    'x-b3-flags',
-    'b3',
-    'x-ot-span-context',
     'fail'
   ]
   output = {}
   for h in incoming_headers:
     if headers.get(h):
       val = headers[h]
-      if h == 'x-b3-sampled' and _convert(val) == 0:
-        output[h] = 1
-      else:
-        output[h] = val
   return output
 
 
@@ -73,4 +61,4 @@ def _convert(obj):
 
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=80)
+  app.run(host='0.0.0.0', port=8080)

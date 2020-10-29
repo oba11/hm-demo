@@ -21,7 +21,28 @@ metadata:
 spec:
   hosts:
   - {{ .Values.ingress.host | quote }}
+  - {{ include "python-app.fullname" . }}
   gateways:
+  - {{ include "python-app.fullname" . }}
+  - mesh
+  http:
+  - route:
+    - destination:
+        host: {{ include "python-app.fullname" . }}
+        port:
+          number: {{ .Values.service.port }}
+    # retries:
+    #   attempts: 3
+    #   perTryTimeout: 20s
+    #   retryOn: 5xx
+    # timeout: "10s"
+{{- else }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "python-app.fullname" . }}
+spec:
+  hosts:
   - {{ include "python-app.fullname" . }}
   http:
   - route:
@@ -29,4 +50,9 @@ spec:
         host: {{ include "python-app.fullname" . }}
         port:
           number: {{ .Values.service.port }}
+    # retries:
+    #   attempts: 3
+    #   perTryTimeout: 20s
+    #   retryOn: 5xx
+    # timeout: "10s"
 {{- end }}
